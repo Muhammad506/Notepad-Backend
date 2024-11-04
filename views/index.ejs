@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stylish Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="min-h-screen bg-gray-900 flex flex-col items-center justify-center bg-gradient-to-br py-6 from-gray-900 via-purple-900 to-blue-900"
+  >
+    <!-- Form Container -->
+    <section
+      class="w-full max-w-md mx-auto p-8 bg-gray-800 bg-opacity-80 rounded-xl shadow-2xl backdrop-filter backdrop-blur-lg"
+    >
+      <!-- Form Heading -->
+      <h2 class="text-center text-2xl font-bold text-white mb-6">
+        Submit Your Details
+      </h2>
+
+      <!-- Form -->
+      <form action="/create" method="POST" class="space-y-6">
+        <!-- Title Input -->
+        <div>
+          <label
+            for="title"
+            class="block text-sm font-medium text-gray-200 mb-2"
+            >Title</label
+          >
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Enter Title"
+            aria-label="Title input"
+            required
+            class="w-full px-4 py-2 border border-gray-600 bg-gray-700 text-white rounded-lg outline-none placeholder-gray-400 focus:ring-2 focus:ring-purple-800 focus:border-transparent"
+          />
+        </div>
+
+        <!-- Details Textarea -->
+        <div>
+          <label
+            for="details"
+            class="block text-sm font-medium text-gray-200 mb-2"
+            >Details</label
+          >
+          <textarea
+            id="details"
+            name="details"
+            placeholder="Enter details here"
+            rows="4"
+            aria-label="Details textarea"
+            required
+            class="w-full px-4 py-2 border border-gray-600 bg-gray-700 text-white rounded-lg placeholder-gray-400 outline-none focus:ring-2 focus:ring-purple-800 focus:border-transparent resize-none"
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+          <input
+            type="submit"
+            value="Submit"
+            class="w-1/2 py-3 bg-purple-600 text-white font-semibold rounded-full hover:bg-purple-800 border-white border focus:outline-none focus:ring-2 focus:ring-purple-200 transition duration-200 ease-in-out"
+          />
+        </div>
+      </form>
+    </section>
+
+    <!-- Output Data -->
+    <div class="flex flex-wrap gap-3 mt-8">
+      <% if (files && files.length > 0) { %> <% files.forEach(function(val) { %>
+      <div
+        class="min-w-72 px-4 py-5 flex flex-col text-center items-center justify-center bg-gray-800 rounded-lg shadow-md text-white transition-transform duration-300 hover:scale-105"
+      >
+        <h1 class="text-3xl font-semibold"><%= val %></h1>
+        <a class="text-purple-400 hover:text-purple-300 mt-2" href="/">
+          Read Me
+        </a>
+      </div>
+      <% }) %> <% } else { %>
+      <!-- No Data Yet Message -->
+      <h1 class="text-4xl text-white mt-10 text-center">No Data Yet</h1>
+      <% } %>
+    </div>
+  </body>
+</html>
